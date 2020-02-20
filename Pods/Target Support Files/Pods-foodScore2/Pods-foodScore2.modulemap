@@ -1,0 +1,6 @@
+framework module Pods_foodScore2 {
+  umbrella header "Pods-foodScore2-umbrella.h"
+
+  export *
+  module * { export * }
+}
