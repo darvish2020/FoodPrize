@@ -45,14 +45,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VLF-km-ysj">
-                                <rect key="frame" x="0.0" y="44" width="414" height="45"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JWa-xd-BAS">
-                                <rect key="frame" x="0.0" y="97" width="414" height="313.5"/>
+                                <rect key="frame" x="0.0" y="147" width="414" height="313.5"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MNh-dH-F4n">
                                 <rect key="frame" x="192" y="832" width="30" height="35"/>
@@ -66,10 +60,27 @@
                                     <action selector="itemPriceInsert:" destination="tLm-3K-KyL" eventType="touchUpInside" id="f46-aT-nqz"/>
                                 </connections>
                             </button>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bR6-Ra-HDG">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="mcS-x3-xwG"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="Title" id="Kmb-zS-1ng"/>
+                                </items>
+                            </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VLF-km-ysj">
+                                <rect key="frame" x="0.0" y="94" width="414" height="45"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBrownColor" red="0.63529411759999999" green="0.51764705879999995" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="VLF-km-ysj" firstAttribute="top" secondItem="xpE-Id-1Ny" secondAttribute="top" id="EmL-Yu-bau"/>
+                            <constraint firstItem="VLF-km-ysj" firstAttribute="top" secondItem="xpE-Id-1Ny" secondAttribute="top" constant="50" id="23o-LJ-4xm"/>
+                            <constraint firstItem="bR6-Ra-HDG" firstAttribute="leading" secondItem="xpE-Id-1Ny" secondAttribute="leading" id="3NQ-Pl-lBF"/>
+                            <constraint firstItem="bR6-Ra-HDG" firstAttribute="top" secondItem="xpE-Id-1Ny" secondAttribute="top" id="3Sd-2E-JQe"/>
                             <constraint firstItem="VLF-km-ysj" firstAttribute="height" secondItem="ff4-jT-qjb" secondAttribute="height" multiplier="0.05" id="Geh-8Y-ejg"/>
                             <constraint firstItem="JWa-xd-BAS" firstAttribute="height" secondItem="ff4-jT-qjb" secondAttribute="height" multiplier="0.35" id="Ham-0K-ucm"/>
                             <constraint firstItem="VLF-km-ysj" firstAttribute="leading" secondItem="xpE-Id-1Ny" secondAttribute="leading" id="JpS-dO-I11"/>
@@ -77,6 +88,7 @@
                             <constraint firstItem="JWa-xd-BAS" firstAttribute="top" secondItem="VLF-km-ysj" secondAttribute="bottom" constant="8" id="Ly0-rU-QRz"/>
                             <constraint firstItem="JWa-xd-BAS" firstAttribute="leading" secondItem="xpE-Id-1Ny" secondAttribute="leading" id="Nev-v8-4Fd"/>
                             <constraint firstItem="JWa-xd-BAS" firstAttribute="trailing" secondItem="xpE-Id-1Ny" secondAttribute="trailing" id="Vj3-IC-E5r"/>
+                            <constraint firstItem="bR6-Ra-HDG" firstAttribute="trailing" secondItem="xpE-Id-1Ny" secondAttribute="trailing" id="b0s-JC-gWo"/>
                             <constraint firstItem="xpE-Id-1Ny" firstAttribute="trailing" secondItem="VLF-km-ysj" secondAttribute="trailing" id="bRn-GP-6Lo"/>
                             <constraint firstItem="xpE-Id-1Ny" firstAttribute="trailing" secondItem="MNh-dH-F4n" secondAttribute="trailing" constant="192" id="e3T-QA-wXP"/>
                             <constraint firstItem="MNh-dH-F4n" firstAttribute="leading" secondItem="xpE-Id-1Ny" secondAttribute="leading" constant="192" id="u3J-du-Qn1"/>
@@ -85,6 +97,7 @@
                     </view>
                     <connections>
                         <outlet property="nameLabel" destination="VLF-km-ysj" id="8A5-sS-gCx"/>
+                        <outlet property="nav" destination="bR6-Ra-HDG" id="f6l-Ml-gIY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gGC-PX-oiU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -60,7 +60,7 @@ class ViewController: UIViewController,GMSMapViewDelegate,CLLocationManagerDeleg
     func mapView(_ mapView: GMSMapView, didTapPOIWithPlaceID placeID: String, name: String, location: CLLocationCoordinate2D) {
 
         
-        let detailController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "detail") as DetailViewController
+        let detailController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "detail") as! DetailViewController
         detailController.name = name
         detailController.placeID = placeID
         present(detailController, animated: true, completion: nil)
