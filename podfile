@@ -9,4 +9,5 @@ target 'foodScore2' do
 pod 'GoogleMaps'
 pod 'GooglePlacesAPI'
 pod 'GooglePlaces'
+pod 'RealmSwift'
 end

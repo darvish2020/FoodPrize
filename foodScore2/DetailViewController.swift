@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class DetailViewController: UIViewController {
     @IBOutlet var nav: UINavigationBar!
@@ -17,15 +18,6 @@ class DetailViewController: UIViewController {
         
         if #available(iOS 13.0, *) {
             nav.isHidden = true
-        }else{
-//                        let navBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 44))
-//                        view.addSubview(navBar)
-//
-//                        let navItem = UINavigationItem(title: "SomeTitle")
-            //            let doneItem = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(selectorName:))
-            //            navItem.rightBarButtonItem = doneItem
-            //
-            //            navBar.setItems([navItem], animated: false)
         }
         super.viewDidLoad()
         print(placeID)
@@ -46,14 +38,11 @@ class DetailViewController: UIViewController {
         present(itemPriceController, animated: true, completion: nil)
         
     }
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
+
     
+    @IBAction func backToMap(_ sender: UIBarButtonItem) {
+        
+        let mapController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "map")
+        present(mapController, animated: false, completion: nil)
+    }
 }

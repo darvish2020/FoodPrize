@@ -38,6 +38,7 @@ class ViewController: UIViewController,GMSMapViewDelegate,CLLocationManagerDeleg
         mapView.camera = camera
         mapView.delegate = self
         mapView.isMyLocationEnabled = true
+        
 
         
         //placesClient = GMSPlacesClient()
