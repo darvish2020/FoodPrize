@@ -86,13 +86,64 @@
                                 <rect key="frame" x="0.0" y="468" width="414" height="331.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="63" id="gYM-77-5zL">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="63" id="gYM-77-5zL" customClass="ItemTableViewCell" customModule="foodScore2" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="63"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gYM-77-5zL" id="3ey-02-6UX">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="63"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="H26-Dl-nSi">
+                                                    <rect key="frame" x="9" y="0.0" width="84" height="63"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="H26-Dl-nSi" secondAttribute="height" multiplier="4:3" id="qJw-ix-siE"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="item" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JJU-Sw-Z1C">
+                                                    <rect key="frame" x="101" y="0.0" width="165.5" height="31.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wR9-dM-B5e">
+                                                    <rect key="frame" x="101" y="38" width="124" height="25"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xvW-P6-pT3">
+                                                    <rect key="frame" x="330" y="0.0" width="84" height="63"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="xvW-P6-pT3" secondAttribute="height" multiplier="4:3" id="DSc-mf-MwU"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="xvW-P6-pT3" firstAttribute="width" secondItem="xvW-P6-pT3" secondAttribute="height" multiplier="4:3" id="4Fy-aX-eua"/>
+                                                <constraint firstAttribute="bottom" secondItem="H26-Dl-nSi" secondAttribute="bottom" id="6ft-h3-D73"/>
+                                                <constraint firstItem="H26-Dl-nSi" firstAttribute="top" secondItem="3ey-02-6UX" secondAttribute="top" id="8pA-ro-AEx"/>
+                                                <constraint firstItem="H26-Dl-nSi" firstAttribute="leading" secondItem="3ey-02-6UX" secondAttribute="leading" constant="9" id="Fk2-cq-S5c"/>
+                                                <constraint firstAttribute="trailing" secondItem="xvW-P6-pT3" secondAttribute="trailing" id="GX0-Q7-OE7"/>
+                                                <constraint firstAttribute="bottom" secondItem="xvW-P6-pT3" secondAttribute="bottom" id="Gxu-bT-2he"/>
+                                                <constraint firstItem="xvW-P6-pT3" firstAttribute="top" secondItem="3ey-02-6UX" secondAttribute="top" id="InR-U6-7wZ"/>
+                                                <constraint firstItem="JJU-Sw-Z1C" firstAttribute="top" secondItem="3ey-02-6UX" secondAttribute="top" id="U07-j8-abo"/>
+                                                <constraint firstItem="wR9-dM-B5e" firstAttribute="leading" secondItem="H26-Dl-nSi" secondAttribute="trailing" constant="8" id="dPT-hG-hKx"/>
+                                                <constraint firstItem="JJU-Sw-Z1C" firstAttribute="leading" secondItem="H26-Dl-nSi" secondAttribute="trailing" constant="8" id="kZX-MV-D5R"/>
+                                                <constraint firstAttribute="bottom" secondItem="wR9-dM-B5e" secondAttribute="bottom" id="zpL-8d-aT7"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <constraints>
+                                            <constraint firstItem="wR9-dM-B5e" firstAttribute="height" secondItem="gYM-77-5zL" secondAttribute="height" multiplier="0.4" id="KVh-D0-P7g"/>
+                                            <constraint firstItem="JJU-Sw-Z1C" firstAttribute="width" secondItem="gYM-77-5zL" secondAttribute="width" multiplier="0.4" id="P6q-EV-rrh"/>
+                                            <constraint firstItem="JJU-Sw-Z1C" firstAttribute="height" secondItem="gYM-77-5zL" secondAttribute="height" multiplier="0.5" id="cFs-7L-Iy2"/>
+                                            <constraint firstItem="wR9-dM-B5e" firstAttribute="width" secondItem="gYM-77-5zL" secondAttribute="width" multiplier="0.3" id="yia-33-Hfj"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="item" destination="JJU-Sw-Z1C" id="fWY-Dy-KEv"/>
+                                            <outlet property="itemPitcure" destination="H26-Dl-nSi" id="9DB-6H-kmz"/>
+                                            <outlet property="price" destination="wR9-dM-B5e" id="aJg-iP-PsO"/>
+                                            <outlet property="prizeImage" destination="xvW-P6-pT3" id="zGZ-ff-9nr"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>

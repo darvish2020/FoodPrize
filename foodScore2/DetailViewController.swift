@@ -58,6 +58,7 @@ class DetailViewController: UIViewController,UITableViewDelegate,UITableViewData
             
             for result in loadData{
                 itemArray.append(result.item)
+                priceArray.append(result.price)
                 // MARK: TODO 日期轉換
 //                let dateFormatter = DateFormatter()
 //                dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
@@ -90,9 +91,11 @@ class DetailViewController: UIViewController,UITableViewDelegate,UITableViewData
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = itemArray[indexPath.row]
-        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ItemTableViewCell
+       // cell.textLabel?.text = itemArray[indexPath.row]
+        cell.item.text = itemArray[indexPath.row]
+        cell.price.text = "$" + String(priceArray[indexPath.row])
+        //cell.prizeImage.image = UIImage(named: "chickenatteck")
         
         return cell
     }
