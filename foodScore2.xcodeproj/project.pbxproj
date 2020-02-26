@@ -15,6 +15,7 @@
 		B22C4AF023FA666E00418413 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B22C4AEF23FA666E00418413 /* Assets.xcassets */; };
 		B22C4AF323FA666E00418413 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B22C4AF123FA666E00418413 /* LaunchScreen.storyboard */; };
 		B22C4AFD23FBC52500418413 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22C4AFC23FBC52500418413 /* DetailViewController.swift */; };
+		B22C4B2323FF7E2900418413 /* PlaceItemBO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22C4B2223FF7E2900418413 /* PlaceItemBO.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		B22C4AF223FA666E00418413 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B22C4AF423FA666E00418413 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B22C4AFC23FBC52500418413 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		B22C4B2223FF7E2900418413 /* PlaceItemBO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceItemBO.swift; sourceTree = "<group>"; };
 		E7A8A4D89AB2F6231E4F7624 /* Pods_foodScore2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_foodScore2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -81,6 +83,7 @@
 				B22C4AF123FA666E00418413 /* LaunchScreen.storyboard */,
 				B22C4AF423FA666E00418413 /* Info.plist */,
 				B22C4AFC23FBC52500418413 /* DetailViewController.swift */,
+				B22C4B2223FF7E2900418413 /* PlaceItemBO.swift */,
 			);
 			path = foodScore2;
 			sourceTree = "<group>";
@@ -230,6 +233,7 @@
 				B22C4AEB23FA666E00418413 /* ViewController.swift in Sources */,
 				B22C4AE723FA666E00418413 /* AppDelegate.swift in Sources */,
 				B22C4AE923FA666E00418413 /* SceneDelegate.swift in Sources */,
+				B22C4B2323FF7E2900418413 /* PlaceItemBO.swift in Sources */,
 				B22C4AFD23FBC52500418413 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
