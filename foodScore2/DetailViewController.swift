@@ -19,6 +19,7 @@ class DetailViewController: UIViewController,UITableViewDelegate,UITableViewData
     var priceArray = [Int]()
     var prizeArray = [Int]()
     var createDate = [Date]()
+    var serialArray = [Int]()
     @IBOutlet var nameLabel: UILabel!
     override func viewDidLoad() {
         
@@ -37,9 +38,9 @@ class DetailViewController: UIViewController,UITableViewDelegate,UITableViewData
 //        let realMsave = try! Realm()
 //        let saveItems :placeItemBO = placeItemBO()
 //        saveItems.placeID = placeID
-//        saveItems.item = "lottee"
-//        saveItems.price = 150
-//        saveItems.prize = 3
+//        saveItems.item = "lattle"
+//        saveItems.price = 120
+//        saveItems.prize = 5
 //        saveItems.serial = 2
 //
 //        try! realMsave.write{
@@ -59,9 +60,11 @@ class DetailViewController: UIViewController,UITableViewDelegate,UITableViewData
             for result in loadData{
                 itemArray.append(result.item)
                 priceArray.append(result.price)
+                prizeArray.append(result.prize)
+                serialArray.append(result.serial)
                 // MARK: TODO 日期轉換
 //                let dateFormatter = DateFormatter()
-//                dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+//                dateFormatter.dateFormat = "yyyyMMdd"
 //                var testdate = dateFormatter.string(from: result.createDate)
 //                print(testdate)
             }
@@ -72,10 +75,12 @@ class DetailViewController: UIViewController,UITableViewDelegate,UITableViewData
     @IBAction func itemPriceInsert(_ sender: UIButton) {
         
         
-        let itemPriceController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "item")
+        let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "item") as! AddItemViewController
+        controller.isUpdate = false
+        controller.placeId = placeID
+        controller.Serial = (serialArray.last ?? 0) + 1
+        present(controller, animated: true, completion: nil)
         
-        
-        present(itemPriceController, animated: true, completion: nil)
         
     }
 
@@ -98,5 +103,17 @@ class DetailViewController: UIViewController,UITableViewDelegate,UITableViewData
         //cell.prizeImage.image = UIImage(named: "chickenatteck")
         
         return cell
+    }
+    
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "item") as! AddItemViewController
+        controller.isUpdate = true
+        controller.item = itemArray[indexPath.row]
+        controller.price = priceArray[indexPath.row]
+        controller.prize = prizeArray[indexPath.row]
+        controller.placeId = placeID
+        controller.Serial = serialArray[indexPath.row]
+        present(controller, animated: true, completion: nil)
     }
 }
