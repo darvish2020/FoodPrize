@@ -9,7 +9,7 @@
 import Foundation
 
 
-class StringUtil{
+class MethodUtil{
     func isNotEmpty(Str:String?)->Bool{
         
         if let notNilStr = Str{
@@ -25,5 +25,24 @@ class StringUtil{
        
         return true
     }
+    //檢核非空白,數字
+    func isNumber(str:String?)->Bool{
+        if let notnilStr = str{
+            let scan:Scanner = Scanner(string: notnilStr)
+            var val:Int = 0
+            return scan.scanInt(&val) && scan.isAtEnd
+        }else{
+            return false
+        }
+               
+               
+           }
+           func isNotNativeAndDecimal(num:Int)->Bool{
+               
+               return true
+           }
+    
+    
+
 }
 

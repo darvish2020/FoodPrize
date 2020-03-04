@@ -44,9 +44,33 @@ class AddItemViewController: UIViewController {
         
     }
     @IBAction func save(_ sender: UIBarButtonItem) {
-        //MARK: TODO 檢核
-        let stringutils = StringUtil()
-        if stringutils.isNotEmpty(Str: itemText.text){
+        let methodutils = MethodUtil()
+        var warningStr:String = ""
+        if !(methodutils.isNotEmpty(Str: itemText.text)){
+            let alert = UIAlertController(title: "警告", message: "請輸入品項", preferredStyle: .alert)
+            let OKbutton = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alert.addAction(OKbutton)
+            present(alert,animated: true,completion: nil)
+            return
+        }
+        if !(methodutils.isNumber(str: priceText.text)){
+            warningStr += "價格需為數字,"
+        }
+        
+        if  !(methodutils.isNumber(str: prizeText.text)){
+            warningStr += "評價須為數字,"
+        }
+        
+        if warningStr.count > 0{
+            //let index = warningStr.index(warningStr.endIndex, offsetBy: -1)
+            warningStr = String(warningStr.prefix(warningStr.count - 1))
+            let alert = UIAlertController(title: "警告", message: warningStr, preferredStyle: .alert)
+            let OKbutton = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alert.addAction(OKbutton)
+            present(alert,animated: true,completion: nil)
+            return
+        }
+        
             if isUpdate{
                 
             }else{
@@ -62,13 +86,8 @@ class AddItemViewController: UIViewController {
                 }
             }
             
-            //MARK: TODO 記得傳值回去
-        }else{
-            let alert = UIAlertController(title: "警告", message: "請輸入品項", preferredStyle: .alert)
-            let OKbutton = UIAlertAction(title: "OK", style: .default, handler: nil)
-            alert.addAction(OKbutton)
-            present(alert,animated: true,completion: nil)
-        }
+            
+
     }
 }
 
