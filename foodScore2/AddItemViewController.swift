@@ -47,11 +47,12 @@ class AddItemViewController: UIViewController {
         let methodutils = MethodUtil()
         var warningStr:String = ""
         if !(methodutils.isNotEmpty(Str: itemText.text)){
-            let alert = UIAlertController(title: "警告", message: "請輸入品項", preferredStyle: .alert)
-            let OKbutton = UIAlertAction(title: "OK", style: .default, handler: nil)
-            alert.addAction(OKbutton)
-            present(alert,animated: true,completion: nil)
-            return
+//            let alert = UIAlertController(title: "警告", message: "請輸入品項", preferredStyle: .alert)
+//            let OKbutton = UIAlertAction(title: "OK", style: .default, handler: nil)
+//            alert.addAction(OKbutton)
+//            present(alert,animated: true,completion: nil)
+//            return
+            warningStr += "請輸入品項,"
         }
         if !(methodutils.isNumber(str: priceText.text)){
             warningStr += "價格需為數字,"
