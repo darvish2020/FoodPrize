@@ -64,7 +64,8 @@ class ViewController: UIViewController,GMSMapViewDelegate,CLLocationManagerDeleg
         let detailController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "detail") as! DetailViewController
         detailController.name = name
         detailController.placeID = placeID
-        present(detailController, animated: true, completion: nil)
+        self.navigationController?.pushViewController(detailController, animated: true)
+        //present(detailController, animated: true, completion: nil)
     }
 }
 

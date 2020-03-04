@@ -9,10 +9,13 @@
 import UIKit
 import RealmSwift
 
-class DetailViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
+class DetailViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,detailTableViewDelegate {
+
+    
+    @IBOutlet var detailTableView: UITableView!
     var loadItems:Results<placeItemBO>?
     var totalCount = 0
-    @IBOutlet var nav: UINavigationBar!
+    //@IBOutlet var nav: UINavigationBar!
     var placeID:String = ""
     var name:String = ""
     var itemArray = [String]()
@@ -23,52 +26,14 @@ class DetailViewController: UIViewController,UITableViewDelegate,UITableViewData
     @IBOutlet var nameLabel: UILabel!
     override func viewDidLoad() {
         
-        if #available(iOS 13.0, *) {
-            nav.isHidden = true
-        }
+//        if #available(iOS 13.0, *) {
+//            nav.isHidden = true
+//        }
         super.viewDidLoad()
-        print(placeID)
-        print(name)
-        
         //給商家名稱
         nameLabel.text = name
-        
-        
-        //save data once
-//        let realMsave = try! Realm()
-//        let saveItems :placeItemBO = placeItemBO()
-//        saveItems.placeID = placeID
-//        saveItems.item = "lattle"
-//        saveItems.price = 120
-//        saveItems.prize = 5
-//        saveItems.serial = 2
-//
-//        try! realMsave.write{
-//             realMsave.add(saveItems)
-//        }
-       
-        
-        
         //loadData
-        let realM = try! Realm()
-        loadItems = realM.objects(placeItemBO.self).filter("placeID = '\(placeID)'")
-        if let loadData = loadItems{
-            print(loadData.count)
-             print("fileURL: \(realM.configuration.fileURL!)")
-            totalCount = loadData.count
-            
-            for result in loadData{
-                itemArray.append(result.item)
-                priceArray.append(result.price)
-                prizeArray.append(result.prize)
-                serialArray.append(result.serial)
-                // MARK: TODO 日期轉換
-//                let dateFormatter = DateFormatter()
-//                dateFormatter.dateFormat = "yyyyMMdd"
-//                var testdate = dateFormatter.string(from: result.createDate)
-//                print(testdate)
-            }
-        }
+        loadDataFromRealM()
     }
     
     
@@ -79,7 +44,8 @@ class DetailViewController: UIViewController,UITableViewDelegate,UITableViewData
         controller.isUpdate = false
         controller.placeId = placeID
         controller.Serial = (serialArray.last ?? 0) + 1
-        present(controller, animated: true, completion: nil)
+        controller.delegate = self
+        self.navigationController?.pushViewController(controller, animated: true)
         
         
     }
@@ -114,6 +80,34 @@ class DetailViewController: UIViewController,UITableViewDelegate,UITableViewData
         controller.prize = prizeArray[indexPath.row]
         controller.placeId = placeID
         controller.Serial = serialArray[indexPath.row]
-        present(controller, animated: true, completion: nil)
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    func loadDataFromRealM(){
+        let realM = try! Realm()
+        loadItems = realM.objects(placeItemBO.self).filter("placeID = '\(placeID)'")
+        if let loadData = loadItems{
+            print(loadData.count)
+             print("fileURL: \(realM.configuration.fileURL!)")
+            totalCount = loadData.count
+            
+            itemArray.removeAll()
+            priceArray.removeAll()
+            prizeArray.removeAll()
+            serialArray.removeAll()
+            for result in loadData{
+                itemArray.append(result.item)
+                priceArray.append(result.price)
+                prizeArray.append(result.prize)
+                serialArray.append(result.serial)
+            }
+        }
+    }
+    
+    func backToDetil(placeId: String) {
+        placeID = placeId
+        //重新讀取資料
+         loadDataFromRealM()
+        detailTableView.reloadData()
     }
 }

@@ -8,6 +8,9 @@
 
 import UIKit
 import RealmSwift
+protocol detailTableViewDelegate {
+    func backToDetil(placeId:String)
+}
 class AddItemViewController: UIViewController {
 
 
@@ -20,6 +23,7 @@ class AddItemViewController: UIViewController {
     var placeId:String = ""
     var isUpdate:Bool = false
     var Serial = 0
+    var delegate:detailTableViewDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +38,10 @@ class AddItemViewController: UIViewController {
 
 
     @IBAction func cancel(_ sender: UIBarButtonItem) {
-        self.dismiss(animated: true, completion: nil)
+        
+        delegate?.backToDetil(placeId: placeId)
+        self.navigationController?.popViewController(animated: true)
+        
     }
     @IBAction func save(_ sender: UIBarButtonItem) {
         //MARK: TODO 檢核
@@ -50,16 +57,9 @@ class AddItemViewController: UIViewController {
                 saveItem.price = Int(priceText.text!)!
                 saveItem.prize = Int(prizeText.text!)!
                 saveItem.serial = Serial
-                //        let saveItems :placeItemBO = placeItemBO()
-                //        saveItems.placeID = placeID
-                //        saveItems.item = "lottee"
-                //        saveItems.price = 150
-                //        saveItems.prize = 3
-                //        saveItems.serial = 2
-                //
-                //        try! realMsave.write{
-                //             realMsave.add(saveItems)
-                //        }
+                try! realM.write{
+                    realM.add(saveItem)
+                }
             }
             
             //MARK: TODO 記得傳值回去
@@ -71,3 +71,5 @@ class AddItemViewController: UIViewController {
         }
     }
 }
+
+
