@@ -58,6 +58,9 @@ class AddItemViewController: UIViewController {
         if  !(methodutils.isNumber(str: prizeText.text)){
             warningStr += "評價須為數字,"
         }
+        if !(methodutils.isOnetofive(str: prizeText.text)){
+            warningStr += "評價須為1~5之間的整數,"
+        }
         
         if warningStr.count > 0{
             warningStr = String(warningStr.prefix(warningStr.count - 1))
@@ -97,11 +100,12 @@ class AddItemViewController: UIViewController {
             view.dodo.bottomAnchor = bottomLayoutGuide.topAnchor
             view.dodo.success("儲存成功")
             
-            
+            itemText.text = ""
+            priceText.text = ""
+            prizeText.text = ""
             Serial += 1
         }
-        
-        
+
         
     }
 }

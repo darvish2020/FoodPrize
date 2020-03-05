@@ -42,6 +42,21 @@ class MethodUtil{
                return true
            }
     
+    func isOnetofive(str:String?)->Bool{
+        if let notnilStr = str{
+            switch notnilStr.trimmingCharacters(in: .whitespacesAndNewlines) {
+            case "1": break
+            case "2": break
+            case "3": break
+            case"4": break
+            case "5": break
+            default:
+                return false
+            }
+        }
+        return true
+    }
+    
     
 
 }
