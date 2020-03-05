@@ -17,5 +17,8 @@ class placeItemBO:Object{
     @objc dynamic var createDate = Date()
     @objc dynamic var photo:String = ""
     @objc dynamic var serial = 0
-    
+    @objc dynamic var placeKey:String = ""
+    override static func primaryKey() -> String? {
+    return "placeKey"
+    }
 }

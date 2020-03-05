@@ -10,4 +10,5 @@ pod 'GoogleMaps'
 pod 'GooglePlacesAPI'
 pod 'GooglePlaces'
 pod 'RealmSwift'
+pod 'Dodo'
 end

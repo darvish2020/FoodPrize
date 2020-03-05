@@ -23,6 +23,7 @@ class DetailViewController: UIViewController,UITableViewDelegate,UITableViewData
     var prizeArray = [Int]()
     var createDate = [Date]()
     var serialArray = [Int]()
+    var placekeyArray = [String]()
     @IBOutlet var nameLabel: UILabel!
     override func viewDidLoad() {
         
@@ -63,7 +64,6 @@ class DetailViewController: UIViewController,UITableViewDelegate,UITableViewData
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ItemTableViewCell
-       // cell.textLabel?.text = itemArray[indexPath.row]
         cell.item.text = itemArray[indexPath.row]
         cell.price.text = "$" + String(priceArray[indexPath.row])
         //cell.prizeImage.image = UIImage(named: "chickenatteck")
@@ -80,6 +80,8 @@ class DetailViewController: UIViewController,UITableViewDelegate,UITableViewData
         controller.prize = prizeArray[indexPath.row]
         controller.placeId = placeID
         controller.Serial = serialArray[indexPath.row]
+        controller.placeKey = placekeyArray[indexPath.row]
+        controller.delegate = self
         self.navigationController?.pushViewController(controller, animated: true)
     }
     
@@ -95,11 +97,13 @@ class DetailViewController: UIViewController,UITableViewDelegate,UITableViewData
             priceArray.removeAll()
             prizeArray.removeAll()
             serialArray.removeAll()
+            placekeyArray.removeAll()
             for result in loadData{
                 itemArray.append(result.item)
                 priceArray.append(result.price)
                 prizeArray.append(result.prize)
                 serialArray.append(result.serial)
+                placekeyArray.append(result.placeKey)
             }
         }
     }

@@ -8,12 +8,13 @@
 
 import UIKit
 import RealmSwift
+import Dodo
 protocol detailTableViewDelegate {
     func backToDetil(placeId:String)
 }
 class AddItemViewController: UIViewController {
-
-
+    
+    
     @IBOutlet var itemText: UITextField!
     @IBOutlet var priceText: UITextField!
     @IBOutlet var prizeText: UITextField!
@@ -23,6 +24,7 @@ class AddItemViewController: UIViewController {
     var placeId:String = ""
     var isUpdate:Bool = false
     var Serial = 0
+    var placeKey:String = ""
     var delegate:detailTableViewDelegate?
     
     override func viewDidLoad() {
@@ -34,9 +36,9 @@ class AddItemViewController: UIViewController {
         }
     }
     
-
-
-
+    
+    
+    
     @IBAction func cancel(_ sender: UIBarButtonItem) {
         
         delegate?.backToDetil(placeId: placeId)
@@ -47,11 +49,6 @@ class AddItemViewController: UIViewController {
         let methodutils = MethodUtil()
         var warningStr:String = ""
         if !(methodutils.isNotEmpty(Str: itemText.text)){
-//            let alert = UIAlertController(title: "警告", message: "請輸入品項", preferredStyle: .alert)
-//            let OKbutton = UIAlertAction(title: "OK", style: .default, handler: nil)
-//            alert.addAction(OKbutton)
-//            present(alert,animated: true,completion: nil)
-//            return
             warningStr += "請輸入品項,"
         }
         if !(methodutils.isNumber(str: priceText.text)){
@@ -63,7 +60,6 @@ class AddItemViewController: UIViewController {
         }
         
         if warningStr.count > 0{
-            //let index = warningStr.index(warningStr.endIndex, offsetBy: -1)
             warningStr = String(warningStr.prefix(warningStr.count - 1))
             let alert = UIAlertController(title: "警告", message: warningStr, preferredStyle: .alert)
             let OKbutton = UIAlertAction(title: "OK", style: .default, handler: nil)
@@ -71,24 +67,42 @@ class AddItemViewController: UIViewController {
             present(alert,animated: true,completion: nil)
             return
         }
+        let realM = try! Realm()
+        let saveItem:placeItemBO = placeItemBO()
+        saveItem.placeID = placeId
+        saveItem.item = itemText.text!
+        saveItem.price = Int(priceText.text!)!
+        saveItem.prize = Int(prizeText.text!)!
+        saveItem.serial = Serial
         
-            if isUpdate{
+        if isUpdate{
+            saveItem.placeKey = placeKey
+            try! realM.write{
+                realM.add(saveItem, update: .modified)
                 
-            }else{
-                let realM = try! Realm()
-                let saveItem:placeItemBO = placeItemBO()
-                saveItem.placeID = placeId
-                saveItem.item = itemText.text!
-                saveItem.price = Int(priceText.text!)!
-                saveItem.prize = Int(prizeText.text!)!
-                saveItem.serial = Serial
-                try! realM.write{
-                    realM.add(saveItem)
-                }
             }
+            view.dodo.style.bar.locationTop = false
+            view.dodo.style.bar.hideAfterDelaySeconds = 2
+            view.dodo.bottomAnchor = bottomLayoutGuide.topAnchor
+            view.dodo.success("修改成功")
+        }else{
+            var savePlacekey = placeId + String(Serial)
+            saveItem.placeKey = savePlacekey
+            try! realM.write{
+                realM.add(saveItem)
+            }
+            //MARK: 失敗的顯示方式？！
+            view.dodo.style.bar.locationTop = false
+            view.dodo.style.bar.hideAfterDelaySeconds = 2
+            view.dodo.bottomAnchor = bottomLayoutGuide.topAnchor
+            view.dodo.success("儲存成功")
             
             
-
+            Serial += 1
+        }
+        
+        
+        
     }
 }
 
