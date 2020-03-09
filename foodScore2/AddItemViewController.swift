@@ -9,6 +9,7 @@
 import UIKit
 import RealmSwift
 import Dodo
+import FloatRatingView
 protocol detailTableViewDelegate {
     func backToDetil(placeId:String)
 }
@@ -17,7 +18,7 @@ class AddItemViewController: UIViewController {
     
     @IBOutlet var itemText: UITextField!
     @IBOutlet var priceText: UITextField!
-    @IBOutlet var prizeText: UITextField!
+    @IBOutlet var prizeView: FloatRatingView!
     var item:String = ""
     var price:Int = 0
     var prize:Int = 0
@@ -29,10 +30,13 @@ class AddItemViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         if isUpdate{
             itemText.text = item
             priceText.text = String(price)
-            prizeText.text = String(prize)
+            prizeView.rating = Double(prize)
+        }else{
+            prizeView.rating = 0.0
         }
     }
     
@@ -55,13 +59,6 @@ class AddItemViewController: UIViewController {
             warningStr += "價格需為數字,"
         }
         
-        if  !(methodutils.isNumber(str: prizeText.text)){
-            warningStr += "評價須為數字,"
-        }
-        if !(methodutils.isOnetofive(str: prizeText.text)){
-            warningStr += "評價須為1~5之間的整數,"
-        }
-        
         if warningStr.count > 0{
             warningStr = String(warningStr.prefix(warningStr.count - 1))
             let alert = UIAlertController(title: "警告", message: warningStr, preferredStyle: .alert)
@@ -75,7 +72,7 @@ class AddItemViewController: UIViewController {
         saveItem.placeID = placeId
         saveItem.item = itemText.text!
         saveItem.price = Int(priceText.text!)!
-        saveItem.prize = Int(prizeText.text!)!
+        saveItem.prize = Int(self.prizeView.rating)
         saveItem.serial = Serial
         
         if isUpdate{
@@ -102,7 +99,7 @@ class AddItemViewController: UIViewController {
             
             itemText.text = ""
             priceText.text = ""
-            prizeText.text = ""
+            prizeView.rating = 0.0
             Serial += 1
         }
 

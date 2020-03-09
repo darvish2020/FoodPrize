@@ -1,6 +1,7 @@
 PODS:
   - Alamofire (4.9.1)
   - Dodo (13.0.0)
+  - FloatRatingView (4.0)
   - GoogleMaps (3.1.0):
     - GoogleMaps/Maps (= 3.1.0)
   - GoogleMaps/Base (3.1.0)
@@ -20,6 +21,7 @@ PODS:
 
 DEPENDENCIES:
   - Dodo
+  - FloatRatingView (~> 4)
   - GoogleMaps
   - GooglePlaces
   - GooglePlacesAPI
@@ -29,6 +31,7 @@ SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
     - Dodo
+    - FloatRatingView
     - GoogleMaps
     - GooglePlaces
     - GooglePlacesAPI
@@ -39,6 +42,7 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   Dodo: e13a732c6f95b48fbf7001d483c0f4ee967a78dd
+  FloatRatingView: bb6bdddfbeec51b1d387b4bd50abc27b4dfccd48
   GoogleMaps: 5c13302e6fe6bb6e686b267196586b91cd594225
   GooglePlaces: e874db179f2675c4f3eeda0b686b540273a578b0
   GooglePlacesAPI: 6184a463b58443f1bde3fab6ce725c1c8e540419
@@ -46,6 +50,6 @@ SPEC CHECKSUMS:
   Realm: 5e92902e2875dff4bb0fd02f67bb737c3d5db2bc
   RealmSwift: 9a360fc7bae04fc2e308a34fbd899d5faa2d6b22
 
-PODFILE CHECKSUM: d21e0a0badd4ad997492c40603db1eb1023b761e
+PODFILE CHECKSUM: d42287a43723da1184fa146556ceaf28426e96d3
 
 COCOAPODS: 1.7.2

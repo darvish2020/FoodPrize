@@ -207,11 +207,23 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8dN-mu-QCg">
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ek5-z6-e6X" customClass="FloatRatingView" customModule="FloatRatingView">
                                 <rect key="frame" x="252" y="562" width="142" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                            </textField>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="emptyImage" value="star" catalog="system"/>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="fullImage" value="star.fill" catalog="system"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="minRating">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="maxRating">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="rating">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -219,29 +231,29 @@
                             <constraint firstItem="UaK-n2-RrP" firstAttribute="top" secondItem="Ytx-uc-img" secondAttribute="bottom" constant="14" id="0ZL-js-eri"/>
                             <constraint firstItem="AMw-aj-g39" firstAttribute="height" secondItem="xMz-ny-gJ4" secondAttribute="height" multiplier="0.0379464" id="3Jq-NR-lmJ"/>
                             <constraint firstItem="rqr-Xp-rFY" firstAttribute="top" secondItem="wU9-uo-6hY" secondAttribute="bottom" constant="29.5" id="3qT-ca-r2n"/>
-                            <constraint firstItem="8Dd-T6-j5L" firstAttribute="trailing" secondItem="crO-iE-PWj" secondAttribute="trailing" constant="20" id="3rC-bo-HA5"/>
-                            <constraint firstItem="8dN-mu-QCg" firstAttribute="height" secondItem="xMz-ny-gJ4" secondAttribute="height" multiplier="0.0379464" id="5XP-VX-EAo"/>
                             <constraint firstItem="UaK-n2-RrP" firstAttribute="width" secondItem="xMz-ny-gJ4" secondAttribute="width" multiplier="0.2" id="8cO-Ta-y4R"/>
                             <constraint firstItem="wU9-uo-6hY" firstAttribute="height" secondItem="xMz-ny-gJ4" secondAttribute="height" multiplier="0.4" id="B5A-El-88B"/>
                             <constraint firstItem="AMw-aj-g39" firstAttribute="top" secondItem="wU9-uo-6hY" secondAttribute="bottom" constant="27.5" id="BI1-y0-Lgo"/>
+                            <constraint firstItem="Ek5-z6-e6X" firstAttribute="top" secondItem="crO-iE-PWj" secondAttribute="bottom" constant="10" id="DOK-iX-aEW"/>
                             <constraint firstItem="wU9-uo-6hY" firstAttribute="leading" secondItem="8Dd-T6-j5L" secondAttribute="leading" id="FGv-lJ-0y0"/>
                             <constraint firstItem="wU9-uo-6hY" firstAttribute="trailing" secondItem="8Dd-T6-j5L" secondAttribute="trailing" id="HpB-FQ-CTY"/>
-                            <constraint firstItem="crO-iE-PWj" firstAttribute="height" secondItem="xMz-ny-gJ4" secondAttribute="height" multiplier="0.0379464" id="JQp-rz-Gcp"/>
-                            <constraint firstItem="crO-iE-PWj" firstAttribute="width" secondItem="xMz-ny-gJ4" secondAttribute="width" multiplier="0.342995" id="Pgd-aB-Kak"/>
-                            <constraint firstItem="8Dd-T6-j5L" firstAttribute="trailing" secondItem="8dN-mu-QCg" secondAttribute="trailing" constant="20" id="UFN-rn-48K"/>
+                            <constraint firstItem="crO-iE-PWj" firstAttribute="top" secondItem="AMw-aj-g39" secondAttribute="bottom" constant="10" id="TiG-xr-wDa"/>
                             <constraint firstItem="rqr-Xp-rFY" firstAttribute="width" secondItem="xMz-ny-gJ4" secondAttribute="width" multiplier="0.2" id="WQf-5r-1f9"/>
+                            <constraint firstItem="crO-iE-PWj" firstAttribute="height" secondItem="xMz-ny-gJ4" secondAttribute="height" multiplier="0.0379464" id="XIn-bH-kHT"/>
                             <constraint firstItem="UaK-n2-RrP" firstAttribute="height" secondItem="xMz-ny-gJ4" secondAttribute="height" multiplier="0.0334821" id="ZK3-oY-lGG"/>
-                            <constraint firstItem="8dN-mu-QCg" firstAttribute="width" secondItem="xMz-ny-gJ4" secondAttribute="width" multiplier="0.342995" id="bo8-kd-Pgi"/>
+                            <constraint firstItem="Ek5-z6-e6X" firstAttribute="height" secondItem="xMz-ny-gJ4" secondAttribute="height" multiplier="0.0379464" id="aGS-eF-TYx"/>
                             <constraint firstItem="Ytx-uc-img" firstAttribute="top" secondItem="rqr-Xp-rFY" secondAttribute="bottom" constant="14" id="e59-fx-VpY"/>
+                            <constraint firstItem="8Dd-T6-j5L" firstAttribute="trailing" secondItem="Ek5-z6-e6X" secondAttribute="trailing" constant="20" id="h2o-m0-ogv"/>
                             <constraint firstItem="Ytx-uc-img" firstAttribute="height" secondItem="xMz-ny-gJ4" secondAttribute="height" multiplier="0.0334821" id="j94-yY-Dqw"/>
                             <constraint firstItem="Ytx-uc-img" firstAttribute="width" secondItem="xMz-ny-gJ4" secondAttribute="width" multiplier="0.2" id="js5-jm-vZj"/>
-                            <constraint firstItem="crO-iE-PWj" firstAttribute="top" secondItem="AMw-aj-g39" secondAttribute="bottom" constant="10" id="lf0-9d-DjF"/>
                             <constraint firstItem="8Dd-T6-j5L" firstAttribute="trailing" secondItem="AMw-aj-g39" secondAttribute="trailing" constant="20" id="nLK-Hx-wje"/>
-                            <constraint firstItem="8dN-mu-QCg" firstAttribute="top" secondItem="crO-iE-PWj" secondAttribute="bottom" constant="10" id="pNm-62-hjV"/>
                             <constraint firstItem="Ytx-uc-img" firstAttribute="leading" secondItem="8Dd-T6-j5L" secondAttribute="leading" constant="20" id="rJn-qg-P1Q"/>
                             <constraint firstItem="rqr-Xp-rFY" firstAttribute="height" secondItem="xMz-ny-gJ4" secondAttribute="height" multiplier="0.0334821" id="sQG-FJ-gbU"/>
                             <constraint firstItem="rqr-Xp-rFY" firstAttribute="leading" secondItem="8Dd-T6-j5L" secondAttribute="leading" constant="20" id="tTV-OK-CnR"/>
                             <constraint firstItem="AMw-aj-g39" firstAttribute="width" secondItem="xMz-ny-gJ4" secondAttribute="width" multiplier="0.342995" id="tph-se-T8C"/>
+                            <constraint firstItem="Ek5-z6-e6X" firstAttribute="width" secondItem="xMz-ny-gJ4" secondAttribute="width" multiplier="0.342995" id="wD2-SJ-cfa"/>
+                            <constraint firstItem="crO-iE-PWj" firstAttribute="width" secondItem="xMz-ny-gJ4" secondAttribute="width" multiplier="0.342995" id="wT4-bm-Frx"/>
+                            <constraint firstItem="8Dd-T6-j5L" firstAttribute="trailing" secondItem="crO-iE-PWj" secondAttribute="trailing" constant="20" id="yfd-Nq-PWV"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8Dd-T6-j5L"/>
                     </view>
@@ -260,7 +272,7 @@
                     <connections>
                         <outlet property="itemText" destination="AMw-aj-g39" id="xkh-Bj-Anl"/>
                         <outlet property="priceText" destination="crO-iE-PWj" id="dAh-5r-24L"/>
-                        <outlet property="prizeText" destination="8dN-mu-QCg" id="keC-Pk-WhW"/>
+                        <outlet property="prizeView" destination="Ek5-z6-e6X" id="Q8g-WR-cAN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dvm-Nu-ZJc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -304,4 +316,8 @@
             <point key="canvasLocation" x="5743.4782608695659" y="114.50892857142857"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="star" catalog="system" width="64" height="58"/>
+        <image name="star.fill" catalog="system" width="64" height="58"/>
+    </resources>
 </document>
