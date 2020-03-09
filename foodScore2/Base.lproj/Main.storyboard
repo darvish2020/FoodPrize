@@ -97,28 +97,40 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xvW-P6-pT3">
-                                                    <rect key="frame" x="330" y="0.0" width="84" height="63"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" secondItem="xvW-P6-pT3" secondAttribute="height" multiplier="4:3" id="DSc-mf-MwU"/>
-                                                    </constraints>
-                                                </imageView>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="58h-Mg-hTh" customClass="FloatRatingView" customModule="FloatRatingView">
+                                                    <rect key="frame" x="233" y="0.0" width="181" height="63"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                    <color key="tintColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="image" keyPath="emptyImage" value="star" catalog="system"/>
+                                                        <userDefinedRuntimeAttribute type="image" keyPath="fullImage" value="star.fill" catalog="system"/>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="minRating">
+                                                            <integer key="value" value="1"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="maxRating">
+                                                            <integer key="value" value="5"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="rating">
+                                                            <real key="value" value="0.0"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="xvW-P6-pT3" firstAttribute="width" secondItem="xvW-P6-pT3" secondAttribute="height" multiplier="4:3" id="4Fy-aX-eua"/>
                                                 <constraint firstAttribute="bottom" secondItem="H26-Dl-nSi" secondAttribute="bottom" id="6ft-h3-D73"/>
                                                 <constraint firstItem="H26-Dl-nSi" firstAttribute="top" secondItem="3ey-02-6UX" secondAttribute="top" id="8pA-ro-AEx"/>
                                                 <constraint firstItem="H26-Dl-nSi" firstAttribute="leading" secondItem="3ey-02-6UX" secondAttribute="leading" constant="9" id="Fk2-cq-S5c"/>
-                                                <constraint firstAttribute="trailing" secondItem="xvW-P6-pT3" secondAttribute="trailing" id="GX0-Q7-OE7"/>
-                                                <constraint firstAttribute="bottom" secondItem="xvW-P6-pT3" secondAttribute="bottom" id="Gxu-bT-2he"/>
-                                                <constraint firstItem="xvW-P6-pT3" firstAttribute="top" secondItem="3ey-02-6UX" secondAttribute="top" id="InR-U6-7wZ"/>
+                                                <constraint firstItem="58h-Mg-hTh" firstAttribute="top" secondItem="3ey-02-6UX" secondAttribute="top" id="LdQ-vC-bXV"/>
                                                 <constraint firstItem="JJU-Sw-Z1C" firstAttribute="top" secondItem="3ey-02-6UX" secondAttribute="top" id="U07-j8-abo"/>
                                                 <constraint firstItem="wR9-dM-B5e" firstAttribute="leading" secondItem="H26-Dl-nSi" secondAttribute="trailing" constant="8" id="dPT-hG-hKx"/>
+                                                <constraint firstAttribute="bottom" secondItem="58h-Mg-hTh" secondAttribute="bottom" id="heh-SI-UaB"/>
                                                 <constraint firstItem="JJU-Sw-Z1C" firstAttribute="leading" secondItem="H26-Dl-nSi" secondAttribute="trailing" constant="8" id="kZX-MV-D5R"/>
+                                                <constraint firstAttribute="trailing" secondItem="58h-Mg-hTh" secondAttribute="trailing" id="nZK-mj-JzJ"/>
                                                 <constraint firstAttribute="bottom" secondItem="wR9-dM-B5e" secondAttribute="bottom" id="zpL-8d-aT7"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <constraints>
+                                            <constraint firstItem="58h-Mg-hTh" firstAttribute="width" secondItem="gYM-77-5zL" secondAttribute="width" multiplier="0.437198" id="8ds-ke-77B"/>
                                             <constraint firstItem="wR9-dM-B5e" firstAttribute="height" secondItem="gYM-77-5zL" secondAttribute="height" multiplier="0.4" id="KVh-D0-P7g"/>
                                             <constraint firstItem="JJU-Sw-Z1C" firstAttribute="width" secondItem="gYM-77-5zL" secondAttribute="width" multiplier="0.4" id="P6q-EV-rrh"/>
                                             <constraint firstItem="JJU-Sw-Z1C" firstAttribute="height" secondItem="gYM-77-5zL" secondAttribute="height" multiplier="0.5" id="cFs-7L-Iy2"/>
@@ -128,7 +140,7 @@
                                             <outlet property="item" destination="JJU-Sw-Z1C" id="fWY-Dy-KEv"/>
                                             <outlet property="itemPitcure" destination="H26-Dl-nSi" id="9DB-6H-kmz"/>
                                             <outlet property="price" destination="wR9-dM-B5e" id="aJg-iP-PsO"/>
-                                            <outlet property="prizeImage" destination="xvW-P6-pT3" id="zGZ-ff-9nr"/>
+                                            <outlet property="prizeView" destination="58h-Mg-hTh" id="LSl-SD-ws4"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -138,7 +150,7 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBrownColor" red="0.63529411759999999" green="0.51764705879999995" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.66022056341171265" green="0.86434394121170044" blue="0.92794609069824219" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="VLF-km-ysj" firstAttribute="top" secondItem="xpE-Id-1Ny" secondAttribute="top" constant="50" id="23o-LJ-4xm"/>
                             <constraint firstItem="NLi-7E-YZy" firstAttribute="trailing" secondItem="xpE-Id-1Ny" secondAttribute="trailing" id="9xs-Jb-Cxg"/>
@@ -210,6 +222,7 @@
                             <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ek5-z6-e6X" customClass="FloatRatingView" customModule="FloatRatingView">
                                 <rect key="frame" x="252" y="562" width="142" height="34"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="tintColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="image" keyPath="emptyImage" value="star" catalog="system"/>
                                     <userDefinedRuntimeAttribute type="image" keyPath="fullImage" value="star.fill" catalog="system"/>
@@ -225,7 +238,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.6636577844619751" green="0.86129474639892578" blue="0.92942613363265991" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="UaK-n2-RrP" firstAttribute="leading" secondItem="8Dd-T6-j5L" secondAttribute="leading" constant="20" id="0Ie-el-INz"/>
                             <constraint firstItem="UaK-n2-RrP" firstAttribute="top" secondItem="Ytx-uc-img" secondAttribute="bottom" constant="14" id="0ZL-js-eri"/>

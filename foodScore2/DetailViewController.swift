@@ -67,7 +67,7 @@ class DetailViewController: UIViewController,UITableViewDelegate,UITableViewData
         cell.item.text = itemArray[indexPath.row]
         cell.price.text = "$" + String(priceArray[indexPath.row])
         //cell.prizeImage.image = UIImage(named: "chickenatteck")
-        
+        cell.prizeView.rating = Double(prizeArray[indexPath.row])
         return cell
     }
     
