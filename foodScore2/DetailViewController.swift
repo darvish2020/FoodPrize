@@ -9,10 +9,11 @@
 import UIKit
 import RealmSwift
 
-class DetailViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,detailTableViewDelegate {
+class DetailViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,detailTableViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
 
     
     @IBOutlet var detailTableView: UITableView!
+    @IBOutlet var placePitcure: UIImageView!
     var loadItems:Results<placeItemBO>?
     var totalCount = 0
     //@IBOutlet var nav: UINavigationBar!
@@ -24,13 +25,18 @@ class DetailViewController: UIViewController,UITableViewDelegate,UITableViewData
     var createDate = [Date]()
     var serialArray = [Int]()
     var placekeyArray = [String]()
+    var photoArray = [String]()
+    var hasPlacePitcure:Bool = false
+    let imagePicker = UIImagePickerController()
     @IBOutlet var nameLabel: UILabel!
     override func viewDidLoad() {
         
 //        if #available(iOS 13.0, *) {
 //            nav.isHidden = true
 //        }
+        
         super.viewDidLoad()
+        self.imagePicker.delegate = self
         //給商家名稱
         nameLabel.text = name
         //loadData
@@ -51,7 +57,15 @@ class DetailViewController: UIViewController,UITableViewDelegate,UITableViewData
         
     }
 
+    @IBAction func albumPress(_ sender: UIButton) {
+        imagePicker.sourceType = .photoLibrary
+        self.present(imagePicker,animated: true,completion: nil)
+    }
     
+    @IBAction func cameraPress(_ sender: UIButton) {
+        imagePicker.sourceType = .camera
+         self.present(imagePicker,animated: true,completion: nil)
+    }
     @IBAction func backToMap(_ sender: UIBarButtonItem) {
         
         let mapController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "map")
@@ -59,7 +73,13 @@ class DetailViewController: UIViewController,UITableViewDelegate,UITableViewData
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return totalCount
+        //如果serial 有含店家照片 就要減一
+        var count = totalCount
+        if hasPlacePitcure{
+            count -= 1
+        }
+        
+        return count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -89,8 +109,7 @@ class DetailViewController: UIViewController,UITableViewDelegate,UITableViewData
         let realM = try! Realm()
         loadItems = realM.objects(placeItemBO.self).filter("placeID = '\(placeID)'")
         if let loadData = loadItems{
-            print(loadData.count)
-             print("fileURL: \(realM.configuration.fileURL!)")
+
             totalCount = loadData.count
             
             itemArray.removeAll()
@@ -98,14 +117,41 @@ class DetailViewController: UIViewController,UITableViewDelegate,UITableViewData
             prizeArray.removeAll()
             serialArray.removeAll()
             placekeyArray.removeAll()
-            for result in loadData{
+            photoArray.removeAll()
+            hasPlacePitcure = false
+            //排除店家照片的row
+            for result in loadData.filter("serial <> 0"){
                 itemArray.append(result.item)
                 priceArray.append(result.price)
                 prizeArray.append(result.prize)
                 serialArray.append(result.serial)
                 placekeyArray.append(result.placeKey)
+                
+            }
+            //取得店家row的資料
+            for photoResult in loadData.filter("serial = 0"){
+                photoArray.append(photoResult.photo)
+                break
             }
         }
+        
+        //取店家照片
+        if photoArray.count > 0{
+            hasPlacePitcure = true
+            
+            let fileManager = FileManager.default
+            let docUrls = fileManager.urls(for: .documentDirectory, in:
+                    .userDomainMask)
+            let docUrl = docUrls.first
+            let photoName = photoArray[0]
+            let url1 = docUrl?.appendingPathComponent(photoName)
+            placePitcure.image = UIImage(contentsOfFile: (url1?.path)!)
+                print(url1?.path)
+        }
+
+        
+        
+        
     }
     
     func backToDetil(placeId: String) {
@@ -114,4 +160,45 @@ class DetailViewController: UIViewController,UITableViewDelegate,UITableViewData
          loadDataFromRealM()
         detailTableView.reloadData()
     }
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+                //選取照片顯示在image上
+        let image = info[.originalImage]
+        self.placePitcure.image = image as! UIImage
+        
+        //MARK: 需add row去儲存店家的照片檔名 serial = 0
+        
+        
+        let realM = try! Realm()
+        let saveItem:placeItemBO = placeItemBO()
+        //店家照片固定放在serial=0
+        let photo = placeID + "0"
+        saveItem.placeID = placeID
+        saveItem.item = ""
+        saveItem.price = 0
+        saveItem.prize = 0
+        saveItem.serial = 0
+        saveItem.photo = photo
+        saveItem.placeKey = placeID + "0"
+                  try! realM.write{
+                      realM.add(saveItem, update: .modified)
+                  }
+        
+        
+        //取得路徑
+           let fileManager = FileManager.default
+           let docUrls = fileManager.urls(for: .documentDirectory, in: .userDomainMask)
+           let docUrl = docUrls.first
+        //檔名
+           let interval = Date.timeIntervalSinceReferenceDate
+           
+        let url = docUrl?.appendingPathComponent(photo)
+        //把圖片存在APP裡
+        let data = (image as! UIImage).jpegData(compressionQuality: 0.9)
+           try! data?.write(to: url!)
+        
+        
+        picker.dismiss(animated: true, completion: nil)
+    }
+
 }
+
