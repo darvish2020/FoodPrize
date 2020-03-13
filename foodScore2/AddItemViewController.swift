@@ -19,6 +19,7 @@ class AddItemViewController: UIViewController,UIImagePickerControllerDelegate,UI
     @IBOutlet var itemText: UITextField!
     @IBOutlet var priceText: UITextField!
     @IBOutlet var prizeView: FloatRatingView!
+    @IBOutlet var createDateLabel: UILabel!
     @IBOutlet var itemPicture: UIImageView!
     @IBOutlet var albumButton: UIButton!
     @IBOutlet var cameraButton: UIButton!
@@ -45,13 +46,18 @@ class AddItemViewController: UIViewController,UIImagePickerControllerDelegate,UI
             cameraButton.setImage(nil, for: .disabled)
         }
         imagePicker.delegate = self
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
         if isUpdate{
             itemText.text = item
             priceText.text = String(price)
             prizeView.rating = Double(prize)
-            //MARK:// createDate
+            let StringDate = dateFormatter.string(from: createDate)
+            createDateLabel.text = StringDate
         }else{
             prizeView.rating = 0.0
+            let StringDate = dateFormatter.string(from: Date())
+            createDateLabel.text = StringDate
         }
         
         let fileManager = FileManager.default

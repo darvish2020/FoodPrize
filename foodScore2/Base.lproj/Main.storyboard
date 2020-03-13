@@ -284,6 +284,18 @@
                                     <action selector="camreaPress:" destination="1m6-Dh-EMR" eventType="touchUpInside" id="vSe-PM-OGA"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="日期" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lrT-12-sYz">
+                                <rect key="frame" x="20" y="658" width="51" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Ip-HB-6D0">
+                                <rect key="frame" x="252" y="656" width="142" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.6636577844619751" green="0.86129474639892578" blue="0.92942613363265991" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
@@ -299,18 +311,25 @@
                             <constraint firstItem="08d-Mv-dC5" firstAttribute="top" secondItem="8Dd-T6-j5L" secondAttribute="top" constant="19" id="DE6-Sy-Kcg"/>
                             <constraint firstItem="Ek5-z6-e6X" firstAttribute="top" secondItem="crO-iE-PWj" secondAttribute="bottom" constant="10" id="DOK-iX-aEW"/>
                             <constraint firstItem="wU9-uo-6hY" firstAttribute="leading" secondItem="8Dd-T6-j5L" secondAttribute="leading" id="FGv-lJ-0y0"/>
+                            <constraint firstItem="lrT-12-sYz" firstAttribute="height" secondItem="xMz-ny-gJ4" secondAttribute="height" multiplier="0.0334821" id="HAM-XO-DQu"/>
                             <constraint firstItem="wU9-uo-6hY" firstAttribute="trailing" secondItem="8Dd-T6-j5L" secondAttribute="trailing" id="HpB-FQ-CTY"/>
                             <constraint firstItem="8Dd-T6-j5L" firstAttribute="trailing" secondItem="ENF-Op-fG4" secondAttribute="trailing" constant="20" id="Qgs-Hg-WaL"/>
+                            <constraint firstItem="1Ip-HB-6D0" firstAttribute="height" secondItem="xMz-ny-gJ4" secondAttribute="height" multiplier="0.0379464" id="SWG-dK-fIg"/>
                             <constraint firstItem="crO-iE-PWj" firstAttribute="top" secondItem="AMw-aj-g39" secondAttribute="bottom" constant="10" id="TiG-xr-wDa"/>
+                            <constraint firstItem="lrT-12-sYz" firstAttribute="top" secondItem="UaK-n2-RrP" secondAttribute="bottom" constant="14" id="Vfv-UL-5gZ"/>
                             <constraint firstItem="rqr-Xp-rFY" firstAttribute="width" secondItem="xMz-ny-gJ4" secondAttribute="width" multiplier="0.2" id="WQf-5r-1f9"/>
                             <constraint firstItem="crO-iE-PWj" firstAttribute="height" secondItem="xMz-ny-gJ4" secondAttribute="height" multiplier="0.0379464" id="XIn-bH-kHT"/>
                             <constraint firstItem="UaK-n2-RrP" firstAttribute="height" secondItem="xMz-ny-gJ4" secondAttribute="height" multiplier="0.0334821" id="ZK3-oY-lGG"/>
                             <constraint firstItem="Ek5-z6-e6X" firstAttribute="height" secondItem="xMz-ny-gJ4" secondAttribute="height" multiplier="0.0379464" id="aGS-eF-TYx"/>
+                            <constraint firstItem="lrT-12-sYz" firstAttribute="width" secondItem="xMz-ny-gJ4" secondAttribute="width" multiplier="0.123188" id="akg-Pc-NWw"/>
                             <constraint firstItem="ENF-Op-fG4" firstAttribute="top" secondItem="8Dd-T6-j5L" secondAttribute="top" constant="19" id="dgk-u2-a9K"/>
                             <constraint firstItem="Ytx-uc-img" firstAttribute="top" secondItem="rqr-Xp-rFY" secondAttribute="bottom" constant="14" id="e59-fx-VpY"/>
+                            <constraint firstItem="1Ip-HB-6D0" firstAttribute="width" secondItem="xMz-ny-gJ4" secondAttribute="width" multiplier="0.342995" id="f49-QG-fj9"/>
+                            <constraint firstItem="1Ip-HB-6D0" firstAttribute="top" secondItem="Ek5-z6-e6X" secondAttribute="bottom" constant="10" id="f8r-iQ-ugd"/>
                             <constraint firstItem="8Dd-T6-j5L" firstAttribute="trailing" secondItem="Ek5-z6-e6X" secondAttribute="trailing" constant="20" id="h2o-m0-ogv"/>
                             <constraint firstItem="Ytx-uc-img" firstAttribute="height" secondItem="xMz-ny-gJ4" secondAttribute="height" multiplier="0.0334821" id="j94-yY-Dqw"/>
                             <constraint firstItem="Ytx-uc-img" firstAttribute="width" secondItem="xMz-ny-gJ4" secondAttribute="width" multiplier="0.2" id="js5-jm-vZj"/>
+                            <constraint firstItem="lrT-12-sYz" firstAttribute="leading" secondItem="8Dd-T6-j5L" secondAttribute="leading" constant="20" id="lN2-px-8bP"/>
                             <constraint firstItem="8Dd-T6-j5L" firstAttribute="trailing" secondItem="AMw-aj-g39" secondAttribute="trailing" constant="20" id="nLK-Hx-wje"/>
                             <constraint firstItem="Ytx-uc-img" firstAttribute="leading" secondItem="8Dd-T6-j5L" secondAttribute="leading" constant="20" id="rJn-qg-P1Q"/>
                             <constraint firstItem="rqr-Xp-rFY" firstAttribute="height" secondItem="xMz-ny-gJ4" secondAttribute="height" multiplier="0.0334821" id="sQG-FJ-gbU"/>
@@ -319,6 +338,7 @@
                             <constraint firstItem="Ek5-z6-e6X" firstAttribute="width" secondItem="xMz-ny-gJ4" secondAttribute="width" multiplier="0.342995" id="wD2-SJ-cfa"/>
                             <constraint firstItem="crO-iE-PWj" firstAttribute="width" secondItem="xMz-ny-gJ4" secondAttribute="width" multiplier="0.342995" id="wT4-bm-Frx"/>
                             <constraint firstItem="8Dd-T6-j5L" firstAttribute="trailing" secondItem="crO-iE-PWj" secondAttribute="trailing" constant="20" id="yfd-Nq-PWV"/>
+                            <constraint firstItem="8Dd-T6-j5L" firstAttribute="trailing" secondItem="1Ip-HB-6D0" secondAttribute="trailing" constant="20" id="ynC-eT-RL9"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8Dd-T6-j5L"/>
                     </view>
@@ -337,6 +357,7 @@
                     <connections>
                         <outlet property="albumButton" destination="08d-Mv-dC5" id="EGe-qe-3Py"/>
                         <outlet property="cameraButton" destination="ENF-Op-fG4" id="tuQ-1w-rrS"/>
+                        <outlet property="createDateLabel" destination="1Ip-HB-6D0" id="hWq-DC-GDY"/>
                         <outlet property="itemPicture" destination="wU9-uo-6hY" id="7kS-f7-LIH"/>
                         <outlet property="itemText" destination="AMw-aj-g39" id="xkh-Bj-Anl"/>
                         <outlet property="priceText" destination="crO-iE-PWj" id="dAh-5r-24L"/>
@@ -345,7 +366,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dvm-Nu-ZJc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4604" y="115"/>
+            <point key="canvasLocation" x="4602.898550724638" y="114.50892857142857"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="lL6-ig-Loa">
