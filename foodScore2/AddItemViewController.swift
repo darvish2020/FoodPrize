@@ -13,24 +13,28 @@ import FloatRatingView
 protocol detailTableViewDelegate {
     func backToDetil(placeId:String)
 }
-class AddItemViewController: UIViewController {
+class AddItemViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     
     
     @IBOutlet var itemText: UITextField!
     @IBOutlet var priceText: UITextField!
     @IBOutlet var prizeView: FloatRatingView!
+    @IBOutlet var itemPicture: UIImageView!
     var item:String = ""
     var price:Int = 0
     var prize:Int = 0
     var placeId:String = ""
     var isUpdate:Bool = false
+    var photoName:String = ""
     var Serial = 0
     var placeKey:String = ""
     var delegate:detailTableViewDelegate?
+    let imagePicker = UIImagePickerController()
+    var image:(Any)? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        imagePicker.delegate = self
         if isUpdate{
             itemText.text = item
             priceText.text = String(price)
@@ -38,6 +42,15 @@ class AddItemViewController: UIViewController {
         }else{
             prizeView.rating = 0.0
         }
+        
+        let fileManager = FileManager.default
+                   let docUrls = fileManager.urls(for: .documentDirectory, in:
+                           .userDomainMask)
+                   let docUrl = docUrls.first
+                   
+                   let url1 = docUrl?.appendingPathComponent(photoName)
+                   itemPicture.image = UIImage(contentsOfFile: (url1?.path)!)
+                       print(url1?.path)
     }
     
     
@@ -50,6 +63,7 @@ class AddItemViewController: UIViewController {
         
     }
     @IBAction func save(_ sender: UIBarButtonItem) {
+        var savePhotoName = ""
         let methodutils = MethodUtil()
         var warningStr:String = ""
         if !(methodutils.isNotEmpty(Str: itemText.text)){
@@ -77,6 +91,7 @@ class AddItemViewController: UIViewController {
         
         if isUpdate{
             saveItem.placeKey = placeKey
+            saveItem.photo = photoName
             try! realM.write{
                 realM.add(saveItem, update: .modified)
                 
@@ -85,25 +100,54 @@ class AddItemViewController: UIViewController {
             view.dodo.style.bar.hideAfterDelaySeconds = 2
             view.dodo.bottomAnchor = bottomLayoutGuide.topAnchor
             view.dodo.success("修改成功")
+            
+            //統一照片名稱存入app內
+            savePhotoName = photoName
         }else{
             var savePlacekey = placeId + String(Serial)
             saveItem.placeKey = savePlacekey
+            saveItem.photo = savePlacekey
             try! realM.write{
                 realM.add(saveItem)
             }
-            //MARK: 失敗的顯示方式？！
+            
             view.dodo.style.bar.locationTop = false
             view.dodo.style.bar.hideAfterDelaySeconds = 2
             view.dodo.bottomAnchor = bottomLayoutGuide.topAnchor
             view.dodo.success("儲存成功")
+            savePhotoName = savePlacekey
             
             itemText.text = ""
             priceText.text = ""
             prizeView.rating = 0.0
             Serial += 1
+            itemPicture.image = nil
         }
-
         
+        //MARK: 存照片
+        let fileManager = FileManager.default
+           let docUrls = fileManager.urls(for: .documentDirectory, in: .userDomainMask)
+           let docUrl = docUrls.first
+           let interval = Date.timeIntervalSinceReferenceDate
+           
+        let url = docUrl?.appendingPathComponent(savePhotoName)
+        //把圖片存在APP裡
+        let data = (image as! UIImage).jpegData(compressionQuality: 0.9)
+           try! data?.write(to: url!)
+        
+    }
+    @IBAction func albumPress(_ sender: UIButton) {
+        imagePicker.sourceType = .photoLibrary
+        self.present(imagePicker,animated: true,completion: nil)
+    }
+    @IBAction func camreaPress(_ sender: UIButton) {
+        imagePicker.sourceType = .camera
+        self.present(imagePicker,animated: true,completion: nil)
+    }
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+         image = info[.originalImage]
+         self.itemPicture.image = image as! UIImage
+        imagePicker.dismiss(animated: true, completion: nil)
     }
 }
 

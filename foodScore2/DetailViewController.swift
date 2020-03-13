@@ -13,7 +13,7 @@ class DetailViewController: UIViewController,UITableViewDelegate,UITableViewData
 
     
     @IBOutlet var detailTableView: UITableView!
-    @IBOutlet var placePitcure: UIImageView!
+    @IBOutlet var placePicture: UIImageView!
     var loadItems:Results<placeItemBO>?
     var totalCount = 0
     //@IBOutlet var nav: UINavigationBar!
@@ -25,6 +25,7 @@ class DetailViewController: UIViewController,UITableViewDelegate,UITableViewData
     var createDate = [Date]()
     var serialArray = [Int]()
     var placekeyArray = [String]()
+    var photoPlaceArray = [String]()
     var photoArray = [String]()
     var hasPlacePitcure:Bool = false
     let imagePicker = UIImagePickerController()
@@ -101,8 +102,10 @@ class DetailViewController: UIViewController,UITableViewDelegate,UITableViewData
         controller.placeId = placeID
         controller.Serial = serialArray[indexPath.row]
         controller.placeKey = placekeyArray[indexPath.row]
+        controller.photoName = photoArray[indexPath.row]
         controller.delegate = self
         self.navigationController?.pushViewController(controller, animated: true)
+        
     }
     
     func loadDataFromRealM(){
@@ -117,6 +120,7 @@ class DetailViewController: UIViewController,UITableViewDelegate,UITableViewData
             prizeArray.removeAll()
             serialArray.removeAll()
             placekeyArray.removeAll()
+            photoPlaceArray.removeAll()
             photoArray.removeAll()
             hasPlacePitcure = false
             //排除店家照片的row
@@ -126,26 +130,27 @@ class DetailViewController: UIViewController,UITableViewDelegate,UITableViewData
                 prizeArray.append(result.prize)
                 serialArray.append(result.serial)
                 placekeyArray.append(result.placeKey)
+                photoArray.append(result.photo)
                 
             }
             //取得店家row的資料
             for photoResult in loadData.filter("serial = 0"){
-                photoArray.append(photoResult.photo)
+                photoPlaceArray.append(photoResult.photo)
                 break
             }
         }
         
         //取店家照片
-        if photoArray.count > 0{
+        if photoPlaceArray.count > 0{
             hasPlacePitcure = true
             
             let fileManager = FileManager.default
             let docUrls = fileManager.urls(for: .documentDirectory, in:
                     .userDomainMask)
             let docUrl = docUrls.first
-            let photoName = photoArray[0]
+            let photoName = photoPlaceArray[0]
             let url1 = docUrl?.appendingPathComponent(photoName)
-            placePitcure.image = UIImage(contentsOfFile: (url1?.path)!)
+            placePicture.image = UIImage(contentsOfFile: (url1?.path)!)
                 print(url1?.path)
         }
 
@@ -163,10 +168,7 @@ class DetailViewController: UIViewController,UITableViewDelegate,UITableViewData
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
                 //選取照片顯示在image上
         let image = info[.originalImage]
-        self.placePitcure.image = image as! UIImage
-        
-        //MARK: 需add row去儲存店家的照片檔名 serial = 0
-        
+        self.placePicture.image = image as! UIImage
         
         let realM = try! Realm()
         let saveItem:placeItemBO = placeItemBO()
@@ -188,7 +190,6 @@ class DetailViewController: UIViewController,UITableViewDelegate,UITableViewData
            let fileManager = FileManager.default
            let docUrls = fileManager.urls(for: .documentDirectory, in: .userDomainMask)
            let docUrl = docUrls.first
-        //檔名
            let interval = Date.timeIntervalSinceReferenceDate
            
         let url = docUrl?.appendingPathComponent(photo)

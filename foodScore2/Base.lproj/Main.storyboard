@@ -138,8 +138,8 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ugH-Wu-D8V">
-                                <rect key="frame" x="36" y="158" width="52" height="22"/>
-                                <state key="normal" title="Album">
+                                <rect key="frame" x="36" y="158" width="24" height="22"/>
+                                <state key="normal" image="photo" catalog="system">
                                     <color key="titleColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
@@ -147,8 +147,8 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FFG-z9-anC">
-                                <rect key="frame" x="322" y="158" width="61" height="22"/>
-                                <state key="normal" title="camera">
+                                <rect key="frame" x="359" y="158" width="24" height="22"/>
+                                <state key="normal" image="camera" catalog="system">
                                     <color key="titleColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
@@ -161,7 +161,7 @@
                                     <constraint firstAttribute="height" constant="35" id="eSv-aJ-Thf"/>
                                     <constraint firstAttribute="width" constant="30" id="iUv-Lt-3hw"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" title="+"/>
                                 <connections>
                                     <action selector="itemPriceInsert:" destination="tLm-3K-KyL" eventType="touchUpInside" id="f46-aT-nqz"/>
@@ -198,7 +198,7 @@
                     <connections>
                         <outlet property="detailTableView" destination="NLi-7E-YZy" id="sDw-mm-6UZ"/>
                         <outlet property="nameLabel" destination="VLF-km-ysj" id="8A5-sS-gCx"/>
-                        <outlet property="placePitcure" destination="JWa-xd-BAS" id="wNi-gx-sWT"/>
+                        <outlet property="placePicture" destination="JWa-xd-BAS" id="x6s-LV-5li"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gGC-PX-oiU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -213,40 +213,40 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wU9-uo-6hY">
-                                <rect key="frame" x="0.0" y="88" width="414" height="358.5"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wU9-uo-6hY">
+                                <rect key="frame" x="0.0" y="138" width="414" height="358.5"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="品項" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rqr-Xp-rFY">
-                                <rect key="frame" x="20" y="476" width="83" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="品項" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rqr-Xp-rFY">
+                                <rect key="frame" x="20" y="526" width="83" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AMw-aj-g39">
-                                <rect key="frame" x="252" y="474" width="142" height="34"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AMw-aj-g39">
+                                <rect key="frame" x="252" y="524" width="142" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="價格" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ytx-uc-img">
-                                <rect key="frame" x="20" y="520" width="83" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="價格" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ytx-uc-img">
+                                <rect key="frame" x="20" y="570" width="83" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="評分" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UaK-n2-RrP">
-                                <rect key="frame" x="20" y="564" width="83" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="評分" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UaK-n2-RrP">
+                                <rect key="frame" x="20" y="614" width="83" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="crO-iE-PWj">
-                                <rect key="frame" x="252" y="518" width="142" height="34"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="crO-iE-PWj">
+                                <rect key="frame" x="252" y="568" width="142" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ek5-z6-e6X" customClass="FloatRatingView" customModule="FloatRatingView">
-                                <rect key="frame" x="252" y="562" width="142" height="34"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ek5-z6-e6X" customClass="FloatRatingView" customModule="FloatRatingView">
+                                <rect key="frame" x="252" y="612" width="142" height="34"/>
+                                <color key="backgroundColor" red="0.66022056341171265" green="0.86434394121170044" blue="0.92794609069824219" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="image" keyPath="emptyImage" value="star" catalog="system"/>
@@ -262,16 +262,40 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="08d-Mv-dC5">
+                                <rect key="frame" x="20" y="100" width="52" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Album">
+                                    <color key="titleColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="albumPress:" destination="1m6-Dh-EMR" eventType="touchUpInside" id="1lD-kn-UI4"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ENF-Op-fG4">
+                                <rect key="frame" x="343" y="102" width="61" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="camera">
+                                    <color key="titleColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="camreaPress:" destination="1m6-Dh-EMR" eventType="touchUpInside" id="vSe-PM-OGA"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.6636577844619751" green="0.86129474639892578" blue="0.92942613363265991" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="UaK-n2-RrP" firstAttribute="leading" secondItem="8Dd-T6-j5L" secondAttribute="leading" constant="20" id="0Ie-el-INz"/>
+                            <constraint firstItem="wU9-uo-6hY" firstAttribute="top" secondItem="8Dd-T6-j5L" secondAttribute="top" constant="50" id="0RA-mk-r5I"/>
                             <constraint firstItem="UaK-n2-RrP" firstAttribute="top" secondItem="Ytx-uc-img" secondAttribute="bottom" constant="14" id="0ZL-js-eri"/>
+                            <constraint firstItem="08d-Mv-dC5" firstAttribute="leading" secondItem="8Dd-T6-j5L" secondAttribute="leading" constant="20" id="18A-uO-GDr"/>
                             <constraint firstItem="AMw-aj-g39" firstAttribute="height" secondItem="xMz-ny-gJ4" secondAttribute="height" multiplier="0.0379464" id="3Jq-NR-lmJ"/>
                             <constraint firstItem="rqr-Xp-rFY" firstAttribute="top" secondItem="wU9-uo-6hY" secondAttribute="bottom" constant="29.5" id="3qT-ca-r2n"/>
                             <constraint firstItem="UaK-n2-RrP" firstAttribute="width" secondItem="xMz-ny-gJ4" secondAttribute="width" multiplier="0.2" id="8cO-Ta-y4R"/>
                             <constraint firstItem="wU9-uo-6hY" firstAttribute="height" secondItem="xMz-ny-gJ4" secondAttribute="height" multiplier="0.4" id="B5A-El-88B"/>
                             <constraint firstItem="AMw-aj-g39" firstAttribute="top" secondItem="wU9-uo-6hY" secondAttribute="bottom" constant="27.5" id="BI1-y0-Lgo"/>
+                            <constraint firstItem="08d-Mv-dC5" firstAttribute="top" secondItem="8Dd-T6-j5L" secondAttribute="top" constant="12" id="DE6-Sy-Kcg"/>
                             <constraint firstItem="Ek5-z6-e6X" firstAttribute="top" secondItem="crO-iE-PWj" secondAttribute="bottom" constant="10" id="DOK-iX-aEW"/>
                             <constraint firstItem="wU9-uo-6hY" firstAttribute="leading" secondItem="8Dd-T6-j5L" secondAttribute="leading" id="FGv-lJ-0y0"/>
                             <constraint firstItem="wU9-uo-6hY" firstAttribute="trailing" secondItem="8Dd-T6-j5L" secondAttribute="trailing" id="HpB-FQ-CTY"/>
@@ -308,6 +332,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="itemPicture" destination="wU9-uo-6hY" id="7kS-f7-LIH"/>
                         <outlet property="itemText" destination="AMw-aj-g39" id="xkh-Bj-Anl"/>
                         <outlet property="priceText" destination="crO-iE-PWj" id="dAh-5r-24L"/>
                         <outlet property="prizeView" destination="Ek5-z6-e6X" id="Q8g-WR-cAN"/>
@@ -355,6 +380,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="camera" catalog="system" width="64" height="48"/>
+        <image name="photo" catalog="system" width="64" height="46"/>
         <image name="star" catalog="system" width="64" height="58"/>
         <image name="star.fill" catalog="system" width="64" height="58"/>
     </resources>
