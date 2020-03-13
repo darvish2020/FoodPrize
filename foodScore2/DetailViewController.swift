@@ -30,11 +30,20 @@ class DetailViewController: UIViewController,UITableViewDelegate,UITableViewData
     var hasPlacePitcure:Bool = false
     let imagePicker = UIImagePickerController()
     @IBOutlet var nameLabel: UILabel!
+    @IBOutlet var albumButton: UIButton!
+    @IBOutlet var cameraButton: UIButton!
     override func viewDidLoad() {
         
 //        if #available(iOS 13.0, *) {
 //            nav.isHidden = true
 //        }
+        if #available(iOS 13.0, *){
+        }else{
+            albumButton.setTitle("album", for: .normal)
+            albumButton.setImage(nil, for: .disabled)
+            cameraButton.setTitle("camera", for: .normal)
+            cameraButton.setImage(nil, for: .disabled)
+        }
         
         super.viewDidLoad()
         self.imagePicker.delegate = self

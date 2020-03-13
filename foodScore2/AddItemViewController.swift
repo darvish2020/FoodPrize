@@ -20,6 +20,8 @@ class AddItemViewController: UIViewController,UIImagePickerControllerDelegate,UI
     @IBOutlet var priceText: UITextField!
     @IBOutlet var prizeView: FloatRatingView!
     @IBOutlet var itemPicture: UIImageView!
+    @IBOutlet var albumButton: UIButton!
+    @IBOutlet var cameraButton: UIButton!
     var item:String = ""
     var price:Int = 0
     var prize:Int = 0
@@ -34,6 +36,13 @@ class AddItemViewController: UIViewController,UIImagePickerControllerDelegate,UI
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if #available(iOS 13.0, *){
+        }else{
+            albumButton.setTitle("album", for: .normal)
+            albumButton.setImage(nil, for: .disabled)
+            cameraButton.setTitle("camera", for: .normal)
+            cameraButton.setImage(nil, for: .disabled)
+        }
         imagePicker.delegate = self
         if isUpdate{
             itemText.text = item
