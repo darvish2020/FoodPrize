@@ -8,7 +8,7 @@
 
 import UIKit
 import GoogleMaps
-//import GooglePlaces
+
 
 
 class ViewController: UIViewController,GMSMapViewDelegate,CLLocationManagerDelegate  {
@@ -65,7 +65,7 @@ class ViewController: UIViewController,GMSMapViewDelegate,CLLocationManagerDeleg
         detailController.name = name
         detailController.placeID = placeID
         self.navigationController?.pushViewController(detailController, animated: true)
-        //present(detailController, animated: true, completion: nil)
+        
     }
 }
 

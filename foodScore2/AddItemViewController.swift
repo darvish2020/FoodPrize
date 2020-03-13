@@ -30,6 +30,7 @@ class AddItemViewController: UIViewController,UIImagePickerControllerDelegate,UI
     var photoName:String = ""
     var Serial = 0
     var placeKey:String = ""
+    var createDate = Date()
     var delegate:detailTableViewDelegate?
     let imagePicker = UIImagePickerController()
     var image:(Any)? = nil
@@ -48,18 +49,19 @@ class AddItemViewController: UIViewController,UIImagePickerControllerDelegate,UI
             itemText.text = item
             priceText.text = String(price)
             prizeView.rating = Double(prize)
+            //MARK:// createDate
         }else{
             prizeView.rating = 0.0
         }
         
         let fileManager = FileManager.default
-                   let docUrls = fileManager.urls(for: .documentDirectory, in:
-                           .userDomainMask)
-                   let docUrl = docUrls.first
-                   
-                   let url1 = docUrl?.appendingPathComponent(photoName)
-                   itemPicture.image = UIImage(contentsOfFile: (url1?.path)!)
-                       print(url1?.path)
+        let docUrls = fileManager.urls(for: .documentDirectory, in:
+            .userDomainMask)
+        let docUrl = docUrls.first
+        
+        let url1 = docUrl?.appendingPathComponent(photoName)
+        itemPicture.image = UIImage(contentsOfFile: (url1?.path)!)
+        print(url1?.path)
     }
     
     
@@ -133,16 +135,19 @@ class AddItemViewController: UIViewController,UIImagePickerControllerDelegate,UI
             itemPicture.image = nil
         }
         
-        //MARK: 存照片
-        let fileManager = FileManager.default
-           let docUrls = fileManager.urls(for: .documentDirectory, in: .userDomainMask)
-           let docUrl = docUrls.first
-           let interval = Date.timeIntervalSinceReferenceDate
-           
-        let url = docUrl?.appendingPathComponent(savePhotoName)
-        //把圖片存在APP裡
-        let data = (image as! UIImage).jpegData(compressionQuality: 0.9)
-           try! data?.write(to: url!)
+        if image != nil{
+            let fileManager = FileManager.default
+            let docUrls = fileManager.urls(for: .documentDirectory, in: .userDomainMask)
+            let docUrl = docUrls.first
+            let interval = Date.timeIntervalSinceReferenceDate
+            
+            let url = docUrl?.appendingPathComponent(savePhotoName)
+            //把圖片存在APP裡
+            let data = (image as! UIImage).jpegData(compressionQuality: 0.9)
+            try! data?.write(to: url!)
+        }
+
+        
         
     }
     @IBAction func albumPress(_ sender: UIButton) {
@@ -154,8 +159,8 @@ class AddItemViewController: UIViewController,UIImagePickerControllerDelegate,UI
         self.present(imagePicker,animated: true,completion: nil)
     }
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-         image = info[.originalImage]
-         self.itemPicture.image = image as! UIImage
+        image = info[.originalImage]
+        self.itemPicture.image = image as! UIImage
         imagePicker.dismiss(animated: true, completion: nil)
     }
 }

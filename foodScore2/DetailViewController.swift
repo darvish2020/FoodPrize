@@ -16,13 +16,13 @@ class DetailViewController: UIViewController,UITableViewDelegate,UITableViewData
     @IBOutlet var placePicture: UIImageView!
     var loadItems:Results<placeItemBO>?
     var totalCount = 0
-    //@IBOutlet var nav: UINavigationBar!
+    
     var placeID:String = ""
     var name:String = ""
     var itemArray = [String]()
     var priceArray = [Int]()
     var prizeArray = [Int]()
-    var createDate = [Date]()
+    var createDateArray = [Date]()
     var serialArray = [Int]()
     var placekeyArray = [String]()
     var photoPlaceArray = [String]()
@@ -34,9 +34,7 @@ class DetailViewController: UIViewController,UITableViewDelegate,UITableViewData
     @IBOutlet var cameraButton: UIButton!
     override func viewDidLoad() {
         
-//        if #available(iOS 13.0, *) {
-//            nav.isHidden = true
-//        }
+
         if #available(iOS 13.0, *){
         }else{
             albumButton.setTitle("album", for: .normal)
@@ -76,11 +74,11 @@ class DetailViewController: UIViewController,UITableViewDelegate,UITableViewData
         imagePicker.sourceType = .camera
          self.present(imagePicker,animated: true,completion: nil)
     }
-    @IBAction func backToMap(_ sender: UIBarButtonItem) {
-        
-        let mapController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "map")
-        present(mapController, animated: false, completion: nil)
-    }
+//    @IBAction func backToMap(_ sender: UIBarButtonItem) {
+//
+//        let mapController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "map")
+//        present(mapController, animated: false, completion: nil)
+//    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //如果serial 有含店家照片 就要減一
@@ -96,7 +94,6 @@ class DetailViewController: UIViewController,UITableViewDelegate,UITableViewData
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ItemTableViewCell
         cell.item.text = itemArray[indexPath.row]
         cell.price.text = "$" + String(priceArray[indexPath.row])
-        //cell.prizeImage.image = UIImage(named: "chickenatteck")
         cell.prizeView.rating = Double(prizeArray[indexPath.row])
         return cell
     }
@@ -112,9 +109,46 @@ class DetailViewController: UIViewController,UITableViewDelegate,UITableViewData
         controller.Serial = serialArray[indexPath.row]
         controller.placeKey = placekeyArray[indexPath.row]
         controller.photoName = photoArray[indexPath.row]
+        controller.createDate = createDateArray[indexPath.row]
         controller.delegate = self
         self.navigationController?.pushViewController(controller, animated: true)
         
+    }
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        print(serialArray[indexPath.row])
+        
+        
+        let realM = try! Realm()
+        let deleteItem = realM.objects(placeItemBO.self).filter("placeID = '\(placeID)' and serial = \(serialArray[indexPath.row])")
+
+        try! realM.write{
+            realM.delete(deleteItem)
+        }
+        
+        
+        
+        let fileManager = FileManager.default
+        let docUrls = fileManager.urls(for: .documentDirectory, in:
+            .userDomainMask)
+        let docUrl = docUrls.first
+        let photoName = photoArray[indexPath.row]
+        let url1 = docUrl?.appendingPathComponent(photoName)
+        if let delUrl = url1{
+            do {
+                try fileManager.removeItem(at: delUrl)
+            }catch{
+                print("doesn't have image")
+            }
+        }
+        
+        
+        self.loadDataFromRealM()
+        detailTableView.reloadData()
+        
+        
+    }
+    func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
+        return "delete"
     }
     
     func loadDataFromRealM(){
@@ -131,6 +165,7 @@ class DetailViewController: UIViewController,UITableViewDelegate,UITableViewData
             placekeyArray.removeAll()
             photoPlaceArray.removeAll()
             photoArray.removeAll()
+            createDateArray.removeAll()
             hasPlacePitcure = false
             //排除店家照片的row
             for result in loadData.filter("serial <> 0"){
@@ -138,6 +173,7 @@ class DetailViewController: UIViewController,UITableViewDelegate,UITableViewData
                 priceArray.append(result.price)
                 prizeArray.append(result.prize)
                 serialArray.append(result.serial)
+                createDateArray.append(result.createDate)
                 placekeyArray.append(result.placeKey)
                 photoArray.append(result.photo)
                 
@@ -160,7 +196,7 @@ class DetailViewController: UIViewController,UITableViewDelegate,UITableViewData
             let photoName = photoPlaceArray[0]
             let url1 = docUrl?.appendingPathComponent(photoName)
             placePicture.image = UIImage(contentsOfFile: (url1?.path)!)
-                print(url1?.path)
+                
         }
 
         
@@ -205,6 +241,7 @@ class DetailViewController: UIViewController,UITableViewDelegate,UITableViewData
         //把圖片存在APP裡
         let data = (image as! UIImage).jpegData(compressionQuality: 0.9)
            try! data?.write(to: url!)
+        
         
         
         picker.dismiss(animated: true, completion: nil)
