@@ -17,13 +17,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EL1-Qw-UAK" customClass="GMSMapView">
-                                <rect key="frame" x="0.0" y="88" width="414" height="672"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="717"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="EL1-Qw-UAK" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.75" id="EUJ-RW-oMb"/>
+                            <constraint firstItem="EL1-Qw-UAK" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.8" id="EUJ-RW-oMb"/>
                             <constraint firstItem="EL1-Qw-UAK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="S38-67-TB3"/>
                             <constraint firstItem="EL1-Qw-UAK" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="je7-lf-53F"/>
                             <constraint firstItem="EL1-Qw-UAK" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="xtb-mr-ryK"/>

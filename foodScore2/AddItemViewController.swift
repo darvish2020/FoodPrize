@@ -44,6 +44,7 @@ class AddItemViewController: UIViewController,UIImagePickerControllerDelegate,UI
             albumButton.setImage(nil, for: .disabled)
             cameraButton.setTitle("camera", for: .normal)
             cameraButton.setImage(nil, for: .disabled)
+            
         }
         imagePicker.delegate = self
         let dateFormatter = DateFormatter()
